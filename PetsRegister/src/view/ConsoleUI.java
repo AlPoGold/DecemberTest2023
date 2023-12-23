@@ -43,7 +43,7 @@ public class ConsoleUI implements View{
 
     public void finish() {
         System.out.println("*********");
-        System.out.println("Goodbye!");
+        System.out.println("GOODBYE!");
         System.out.println("*********");
         work = false;
     }

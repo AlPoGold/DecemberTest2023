@@ -13,6 +13,7 @@ public class Menu {
         commandList = new ArrayList<>();
         commandList.add(new AddNewAnimal(consoleUI));
         commandList.add(new CountAnimals(consoleUI));
+        commandList.add(new DeleteAnimal(consoleUI));
         commandList.add(new LearnNewCommand(consoleUI));
         commandList.add(new SortByName(consoleUI));
         commandList.add(new ShowDescription(consoleUI));

@@ -9,7 +9,7 @@ public class Cats extends Pets{
         super();
     }
 
-    public Cats(String name, LocalDate birthDate, List<Command> knownCommands, boolean needCage) {
+    public Cats(String name, LocalDate birthDate, NameClasses knownCommands, List<Command> needCage) {
         super(name, birthDate, knownCommands, needCage);
     }
 

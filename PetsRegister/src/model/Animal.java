@@ -8,12 +8,12 @@ public abstract class Animal implements Serializable {
     private int idAnimal;
     String name;
     LocalDate birthDate;
-    String className;
+    NameClasses className;
     List<Command> knownCommands;
     //TODO: команды, как лучше реализовать
 
 
-    public Animal(String name, LocalDate birthDate, String className, List<Command> knownCommands) {
+    public Animal(String name, LocalDate birthDate, NameClasses className, List<Command> knownCommands) {
         this.idAnimal = -1;
         this.name = name;
         this.birthDate = birthDate;
@@ -31,6 +31,7 @@ public abstract class Animal implements Serializable {
         this.knownCommands = knownCommands;
     }
 
+
     public String getName() {
         return name;
     }
@@ -44,14 +45,32 @@ public abstract class Animal implements Serializable {
     }
 
     public void setId(int id){this.idAnimal = id;}
+    public void setNameClass(NameClasses nameClass){
+        this.className = nameClass;
+    }
 
     @Override
     public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < knownCommands.size(); i++) {
+            if(i<knownCommands.size()-1){
+                sb.append(knownCommands.get(i));
+                sb.append(", ");
+            }else{
+                sb.append(knownCommands.get(i));
+            }
+
+
+        }
         return
                 "id:" + idAnimal +
                 "| name: " + name +
                 "| birthDate: " + birthDate +
                 "| class: " + className +
-                "| knownCommands: " + knownCommands;
+                "| knownCommands: " + sb.toString();
+    }
+
+    public int getId() {
+        return this.idAnimal;
     }
 }

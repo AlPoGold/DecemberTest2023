@@ -8,7 +8,7 @@ public class Dogs extends Pets{
         super();
     }
 
-    public Dogs(String name, LocalDate birthDate, List<Command> knownCommands, boolean needCage) {
+    public Dogs(String name, LocalDate birthDate, NameClasses knownCommands, List<Command> needCage) {
         super(name, birthDate, knownCommands, needCage);
     }
 

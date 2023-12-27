@@ -3,12 +3,13 @@ package model.Service;
 import java.io.*;
 
 public class FileHandler implements Writable {
+
+    //TODO check EOF + serialization
     @Override
     public Serializable readFile(String path) {
         try (FileInputStream file = new FileInputStream(path)) {
             ObjectInputStream oins = new ObjectInputStream(file);
 
-            // Method for deserialization of object
             Serializable object = (Serializable) oins.readObject();
             return object;
         } catch (Exception e) {

@@ -16,8 +16,7 @@ public class LearnNewCommand extends Command{
     @Override
     public void execute(){
         try {
-            System.out.println("This can be error___new_command");
-//            getConsoleUI().addChildren();
+          getConsoleUI().addNewCommand();
         }catch(Exception e){
             e.printStackTrace();
         }

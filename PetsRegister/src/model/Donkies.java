@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Donkies extends PackAnimal{
-    public Donkies(String name, LocalDate birthDate, List<Command> knownCommands, Double cargoWeight) {
-        super(name, birthDate, knownCommands, cargoWeight);
+    public Donkies(String name, LocalDate birthDate, NameClasses nameClass, List<Command> knownCommands) {
+        super(name, birthDate, nameClass, knownCommands);
     }
 
     public Donkies() {

@@ -16,8 +16,7 @@ public class DeleteAnimal extends Command{
     @Override
     public void execute(){
         try {
-            System.out.println("This can be error___delete");
-//            getConsoleUI().addChildren();
+           getConsoleUI().deleteAnimal();
         }catch(Exception e){
             e.printStackTrace();
         }

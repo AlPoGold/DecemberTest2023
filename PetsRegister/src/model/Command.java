@@ -1,5 +1,7 @@
 package model;
 
+import java.util.HashMap;
+
 public enum Command {
 
     Sit("Sit"),
@@ -28,4 +30,26 @@ public enum Command {
     public String getCommand() {
         return command;
     }
+
+    public static HashMap<String, Command> getListCommands(){
+        HashMap<String, Command> mapCommands = new HashMap<>();
+        Command[] commandList = Command.values();
+        for (int i = 0; i < commandList.length ; i++) {
+            mapCommands.put(String.valueOf(i+1), commandList[i]);
+        }
+        return mapCommands;
+    }
+
+    public static Command getCommandByNum(int num){
+        Command newCommand = null;
+        HashMap<String, Command> mapCommands = getListCommands();
+        for (String key: mapCommands.keySet()
+             ) {
+            if(key.equals(String.valueOf(num))){
+                newCommand = mapCommands.get(key);
+            }
+        }
+    return newCommand;
+    }
+
 }

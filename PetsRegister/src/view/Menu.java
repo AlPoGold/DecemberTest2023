@@ -15,9 +15,8 @@ public class Menu {
         commandList.add(new CountAnimals(consoleUI));
         commandList.add(new DeleteAnimal(consoleUI));
         commandList.add(new LearnNewCommand(consoleUI));
-        commandList.add(new SortByName(consoleUI));
         commandList.add(new ShowListAnimal(consoleUI));
-        commandList.add(new ShowKnownCommands(consoleUI));
+        commandList.add(new ShowCommands(consoleUI));
         commandList.add(new SaveFile(consoleUI));
         commandList.add(new Finish(consoleUI));
     }

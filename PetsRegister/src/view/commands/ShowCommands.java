@@ -2,10 +2,10 @@ package view.commands;
 
 import view.ConsoleUI;
 
-public class ShowKnownCommands extends Command{
+public class ShowCommands extends Command{
     private String description;
     private ConsoleUI consoleUI;
-    public ShowKnownCommands(ConsoleUI consoleUI) {
+    public ShowCommands(ConsoleUI consoleUI) {
         super(consoleUI);
         this.description = "Show commands, which animals can learn";
     }
@@ -16,8 +16,7 @@ public class ShowKnownCommands extends Command{
     @Override
     public void execute(){
         try {
-            System.out.println("This can be ___show commands");
-//            getConsoleUI().addChildren();
+            getConsoleUI().showCommands();
         }catch(Exception e){
             e.printStackTrace();
         }

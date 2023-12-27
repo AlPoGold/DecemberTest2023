@@ -1,20 +1,25 @@
 package view;
 
 import model.Command;
+import model.NameClasses;
 import presenter.Presenter;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+
+import static model.Command.getListCommands;
+import static model.NameClasses.getNameClasses;
 
 public class ConsoleUI implements View{
 
 
     private static final String INPUT_ERROR = "WRONG DATA";
     private static final String INPUT_SUCCESS = "ADDING SUCCESSFULLY";
+    private static final String DELETE_SUCCESS = "DELETE SUCCESSFULLY";
+    private static final String ERROR_OPERATION = "Something is wrong!";
+    private static final String SUCCESS_OPERATION = "Operation was finished sucessfully!";
     private Presenter presenter;
     private Scanner scanner;
     private boolean work;
@@ -69,21 +74,69 @@ public class ConsoleUI implements View{
     public void addAnimal(){
         String name = setName();
         LocalDate birthDate = setBirthDate();
-        String className = setClassName();
+        NameClasses className = setClassName();
 
-        List<Command> knownCommands = null;
+        List<Command> knownCommands = setKnownCommands();
 
         presenter.addAnimal(name, birthDate, className, knownCommands);
 
 
 
     }
-//TODO: распарсить данные о классе
-    private String setClassName() {
-        System.out.println("1.cat\n2.dog\n3.humster\n4.horse\n5.donkey\n6.camel\n"
-        + "Insert number of animal's type from the list from above\n");
-        String className = scanner.nextLine();
+//TODO: parse name pets class
+    private NameClasses setClassName() {
+        NameClasses[] nCl = NameClasses.values();
+
+
+        for (int i = 0; i < nCl.length; i++) {
+            System.out.printf("%d. %s\n", i+1, nCl[i]);
+        }
+        System.out.println("Insert number of animal's type from the list above\n");
+        //TODO register num not in list
+        Integer classNameInt = scanner.nextInt();
+        NameClasses className = setDefault();
+        HashMap<Integer, NameClasses> nameClMap = getNameClasses();
+        for (Integer key: nameClMap.keySet()
+             ) {
+            if(Objects.equals(key, classNameInt)){
+                className = nameClMap.get(key);
+                break;
+            }
+        }
         return className;
+    }
+
+    private NameClasses setDefault() {
+        return NameClasses.valueOf(String.valueOf(NameClasses.cat));
+    }
+
+    private List<Command> setKnownCommands(){
+        boolean showCommand = true;
+        List<Command> knownCommand = new ArrayList<>();
+        HashMap<String, Command> checkCommands = getListCommands();
+        Command[] commandList = Command.values();
+        for (int i = 0; i < commandList.length; i++) {
+            System.out.printf("%d. %s\n", i+1, commandList[i]);
+        }
+        System.out.println("Insert number of command, which animal has known. For exit insert -1: ");
+
+        while(showCommand){
+
+            //TODO check input number
+            String command = scanner.nextLine();
+            for (String key: checkCommands.keySet()
+            ) {
+                if (command.equals(key)) {
+                    knownCommand.add(checkCommands.get(key));
+                    break;
+                } else if (command.equals(String.valueOf(-1))) {
+                    showCommand = false;
+                    break;
+                }
+            }
+
+        }
+        return knownCommand;
     }
 
     private LocalDate setBirthDate() {
@@ -131,5 +184,39 @@ public class ConsoleUI implements View{
     public void countAnimals() {
         System.out.print("\nIn Register AMOUNT of animals is: ");
         printAnswer(presenter.countAnimals());
+    }
+
+    public void showCommands() {
+        HashMap<String, Command> listCommands = getListCommands();
+        for (String key: listCommands.keySet()
+             ) {
+            System.out.print(key + ". " + listCommands.get(key)+ "\n");
+        }
+    }
+
+    public void deleteAnimal() {
+        showDescription();
+        System.out.println("Choose id of animal, which you want to delete:");
+        int idForDelete = scanner.nextInt();
+        if(presenter.deleteById(idForDelete)){
+            System.out.println(DELETE_SUCCESS);
+        }else System.out.println(ERROR_OPERATION);
+    }
+
+    public void addNewCommand() {
+
+        //TODO check numbers
+        showDescription();
+        System.out.println("Choose id of animal for new command:");
+        int id = scanner.nextInt();
+
+        showCommands();
+        System.out.println("Choose number of new command: ");
+        int numCommand = scanner.nextInt();
+
+
+        if(presenter.addNewCommand(id, numCommand)){
+            printAnswer(SUCCESS_OPERATION);
+        }else printAnswer(ERROR_OPERATION);
     }
 }

@@ -1,6 +1,7 @@
 package presenter;
 import model.AnimalList;
 import model.Command;
+import model.NameClasses;
 import model.Service.FileHandler;
 import view.View;
 
@@ -20,7 +21,7 @@ public class Presenter {
 
         }
 
-    public void addAnimal(String name, LocalDate birthDate, String className, List<Command> knownCommands) {
+    public void addAnimal(String name, LocalDate birthDate, NameClasses className, List<Command> knownCommands) {
         registerList.addAnimal(name, birthDate, className, knownCommands);
     }
 
@@ -41,12 +42,22 @@ public class Presenter {
 
         //Get list animals from file
         FileHandler fh = new FileHandler();
-        Serializable object = fh.readFile("familytree.out");
+        Serializable object = fh.readFile("pets_register.out");
         this.registerList = (AnimalList) object;
 
     }
 
     public String countAnimals() {
         return String.valueOf(registerList.getCount());
+    }
+
+    public boolean deleteById(int idForDelete) {
+        boolean success = registerList.deleteById(idForDelete);
+        return success;
+    }
+
+    public boolean addNewCommand(int id, int numCommand) {
+        boolean success = registerList.addNewCommand(id, numCommand);
+        return success;
     }
 }

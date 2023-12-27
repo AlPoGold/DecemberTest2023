@@ -11,4 +11,8 @@ public class Horses extends PackAnimal{
     public Horses() {
         super();
     }
+
+    public Horses(String name, LocalDate birthDate, List<Command> knownCommands) {
+        super(name, birthDate, knownCommands);
+    }
 }

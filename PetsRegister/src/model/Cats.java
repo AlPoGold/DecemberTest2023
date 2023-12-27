@@ -12,4 +12,8 @@ public class Cats extends Pets{
     public Cats(String name, LocalDate birthDate, List<Command> knownCommands, boolean needCage) {
         super(name, birthDate, knownCommands, needCage);
     }
+
+    public Cats(String name, LocalDate birthDate, List<Command> knownCommands) {
+        super(name, birthDate, knownCommands);
+    }
 }

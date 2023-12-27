@@ -17,6 +17,10 @@ public abstract class PackAnimal extends Animal{
         this.cargoWeight = null;
     }
 
+    public PackAnimal(String name, LocalDate birthDate, List<Command> knownCommands) {
+        super(name, birthDate, knownCommands);
+    }
+
     public void transportCargo(){
         System.out.printf("I can transport cargo with weight %f kg\n", this.cargoWeight);
     }

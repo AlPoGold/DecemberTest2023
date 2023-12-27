@@ -2,12 +2,12 @@ package view.commands;
 
 import view.ConsoleUI;
 
-public class ShowDescription extends Command{
+public class ShowListAnimal extends Command{
     private String description;
     private ConsoleUI consoleUI;
-    public ShowDescription(ConsoleUI consoleUI) {
+    public ShowListAnimal(ConsoleUI consoleUI) {
         super(consoleUI);
-        this.description = "Show description about animal";
+        this.description = "Show list of  animals";
     }
 
     public String getDescription(){
@@ -16,8 +16,7 @@ public class ShowDescription extends Command{
     @Override
     public void execute(){
         try {
-            System.out.println("This can be error___description");
-//            getConsoleUI().addChildren();
+            getConsoleUI().showDescription();
         }catch(Exception e){
             e.printStackTrace();
         }

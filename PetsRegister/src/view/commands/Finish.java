@@ -19,8 +19,9 @@ public class Finish extends Command{
     @Override
     public void execute(){
         try {
-            System.out.println("This can be error___finish");
-//            getConsoleUI().addChildren();
+
+            getConsoleUI().saveFile();
+            getConsoleUI().finish();
         }catch(Exception e){
             e.printStackTrace();
         }

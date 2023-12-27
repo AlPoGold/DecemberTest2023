@@ -1,7 +1,13 @@
 package view;
 
+import model.Command;
 import presenter.Presenter;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleUI implements View{
@@ -60,4 +66,70 @@ public class ConsoleUI implements View{
     }
 
 
+    public void addAnimal(){
+        String name = setName();
+        LocalDate birthDate = setBirthDate();
+        String className = setClassName();
+
+        List<Command> knownCommands = null;
+
+        presenter.addAnimal(name, birthDate, className, knownCommands);
+
+
+
+    }
+//TODO: распарсить данные о классе
+    private String setClassName() {
+        System.out.println("1.cat\n2.dog\n3.humster\n4.horse\n5.donkey\n6.camel\n"
+        + "Insert number of animal's type from the list from above\n");
+        String className = scanner.nextLine();
+        return className;
+    }
+
+    private LocalDate setBirthDate() {
+        LocalDate birthDate = null;
+        System.out.println("Insert date of birth in format dd.mm.yyyy: ");
+        String birthdateString = scanner.nextLine();
+        SimpleDateFormat formatBirth = new SimpleDateFormat();
+        formatBirth.applyPattern("dd.MM.yyyy");
+        try {
+            Date birthdate = formatBirth.parse(birthdateString);
+            birthDate = convertToLocalDate(birthdate);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return birthDate;
+    }
+
+    public LocalDate convertToLocalDate(Date dateToConvert) {
+        return dateToConvert.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+    }
+
+    private String setName() {
+        System.out.println("Insert animal's name: ");
+        String name = scanner.nextLine();
+        return name;
+    }
+
+
+
+    public void showDescription() {
+        String info = presenter.showDescription();
+        printAnswer(info);
+    }
+
+    public void saveFile() {
+        presenter.saveRegister();
+    }
+
+    public void readFile() {
+        presenter.readFile();
+    }
+
+    public void countAnimals() {
+        System.out.print("\nIn Register AMOUNT of animals is: ");
+        printAnswer(presenter.countAnimals());
+    }
 }

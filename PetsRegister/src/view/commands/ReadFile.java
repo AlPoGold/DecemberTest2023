@@ -2,15 +2,15 @@ package view.commands;
 
 import view.ConsoleUI;
 
-import java.io.IOException;
+public class ReadFile extends Command{
 
-public class AddNewAnimal extends Command{
 
     private String description;
     private ConsoleUI consoleUI;
-    public AddNewAnimal(ConsoleUI consoleUI) {
+
+    public ReadFile(ConsoleUI consoleUI) {
         super(consoleUI);
-        this.description = "Add new animal to the Register";
+        this.description = "Read existing file";
     }
 
     public String getDescription(){
@@ -19,7 +19,7 @@ public class AddNewAnimal extends Command{
     @Override
     public void execute(){
         try {
-            getConsoleUI().addAnimal();
+            getConsoleUI().readFile();
         }catch(Exception e){
             e.printStackTrace();
         }

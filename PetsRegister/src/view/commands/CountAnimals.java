@@ -16,8 +16,7 @@ public class CountAnimals extends Command{
     @Override
     public void execute(){
         try {
-            System.out.println("This can be error___count");
-//            getConsoleUI().addChildren();
+            getConsoleUI().countAnimals();
         }catch(Exception e){
             e.printStackTrace();
         }

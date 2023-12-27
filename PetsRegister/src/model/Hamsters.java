@@ -11,4 +11,8 @@ public class Hamsters extends Pets{
     public Hamsters(String name, LocalDate birthDate, List<Command> knownCommands, boolean needCage) {
         super(name, birthDate, knownCommands, needCage);
     }
+
+    public Hamsters(String name, LocalDate birthDate, List<Command> knownCommands) {
+        super(name, birthDate, knownCommands);
+    }
 }

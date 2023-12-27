@@ -19,8 +19,7 @@ public class SaveFile extends Command{
     @Override
     public void execute(){
         try {
-            System.out.println("This can be error---savefile");
-//            getConsoleUI().addChildren();
+            getConsoleUI().saveFile();
         }catch(Exception e){
             e.printStackTrace();
         }

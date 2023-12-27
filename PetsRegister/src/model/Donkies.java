@@ -11,4 +11,8 @@ public class Donkies extends PackAnimal{
     public Donkies() {
         super();
     }
+
+    public Donkies(String name, LocalDate birthDate, List<Command> knownCommands) {
+        super(name, birthDate, knownCommands);
+    }
 }

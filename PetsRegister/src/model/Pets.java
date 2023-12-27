@@ -16,4 +16,8 @@ public abstract class Pets extends Animal{
         super(name, birthDate, knownCommands);
         this.needCage = needCage;
     }
+
+    public Pets(String name, LocalDate birthDate, List<Command> knownCommands) {
+        super(name, birthDate, knownCommands);
+    }
 }

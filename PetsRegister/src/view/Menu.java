@@ -4,19 +4,19 @@ import view.commands.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Menu {
     private ArrayList<Command> commandList;
 
     public Menu(ConsoleUI consoleUI) {
         commandList = new ArrayList<>();
+        commandList.add(new ReadFile(consoleUI));
         commandList.add(new AddNewAnimal(consoleUI));
         commandList.add(new CountAnimals(consoleUI));
         commandList.add(new DeleteAnimal(consoleUI));
         commandList.add(new LearnNewCommand(consoleUI));
         commandList.add(new SortByName(consoleUI));
-        commandList.add(new ShowDescription(consoleUI));
+        commandList.add(new ShowListAnimal(consoleUI));
         commandList.add(new ShowKnownCommands(consoleUI));
         commandList.add(new SaveFile(consoleUI));
         commandList.add(new Finish(consoleUI));

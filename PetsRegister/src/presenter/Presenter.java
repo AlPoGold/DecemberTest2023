@@ -42,7 +42,7 @@ public class Presenter {
 
         //Get list animals from file
         FileHandler fh = new FileHandler();
-        Serializable object = fh.readFile("pets_register.out");
+        Serializable object = fh.readFile("PetsRegister/pets_register.out");
         this.registerList = (AnimalList) object;
 
     }

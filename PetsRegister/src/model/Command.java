@@ -20,7 +20,12 @@ public enum Command {
     Spin("Spin something"),
     Scratch("Make scratches"),
     Meow("Say meow"),
-    Jump("Jump");
+    Jump("Jump"),
+    Run("Run"),
+    Kick("Kick"),
+    CarryLoad("Carry heavy cargo"),
+    Gallop("Gallop"),
+    Walk("Walk");
     private String command;
 
     Command(String command) {
